@@ -41,7 +41,8 @@ export class Game {
 
   getBidOptions(cardsThisRound: number): number[] {
     const options = [];
-    for (let i = 0; i <= cardsThisRound; i++) {
+    const maxBid = cardsThisRound === 1 ? 1 : cardsThisRound;
+    for (let i = 0; i <= maxBid; i++) {
       options.push(i);
     }
     return options;

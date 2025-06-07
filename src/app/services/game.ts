@@ -61,7 +61,8 @@ export class Game {
   startNewRound() {
     const state = this.state$.getValue();
     const deck = this.shuffle(createDeck());
-    const cardsThisRound = state.round;
+    const cardsThisRound =
+      state.phase === 'end-round' ? state.round + 1 : state.round;
     const players = state.players.map((p, i) => {
       const hand = deck.slice(i * cardsThisRound, (i + 1) * cardsThisRound);
       let bid = 0;
@@ -78,11 +79,11 @@ export class Game {
     });
     this.state$.next({
       ...state,
-      round: state.round + 1,
+      round: state.phase === 'end-round' ? state.round + 1 : state.round,
       players,
       playedCards: [],
       currentPlayerId: 1,
-      cardsThisRound: cardsThisRound + 1,
+      cardsThisRound,
       phase: 'bidding',
       lastTrickWinnerId: null,
       lastTrickWinningCardId: null,
