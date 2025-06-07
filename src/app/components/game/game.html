@@ -2,76 +2,71 @@
   <!-- Titre et infos de round -->
   <header class="game-header">
     <h1>Skull King Card Game</h1>
-    <ng-container *ngIf="gameState$ | async as state">
-      <div class="round-info">
-        <span>Round : {{ state.round }}</span>
-      </div>
+    @if (gameState$ | async; as state) {
+    <div class="round-info">
+      <span>Round : {{ state.round }}</span>
+    </div>
 
-      <!-- Zone cartes jouées -->
-      <section class="played-cards-section">
-        <h2>Plateau de jeu</h2>
-        <app-played-cards
-          [playedCards]="state.playedCards"
-          [players]="state.players"
-          [lastTrickWinnerId]="state.lastTrickWinnerId"
-          [lastTrickWinningCardId]="state.lastTrickWinningCardId"
-        ></app-played-cards>
-      </section>
+    <!-- Zone cartes jouées -->
+    <section class="played-cards-section">
+      <h2>Plateau de jeu</h2>
+      <app-played-cards
+        [playedCards]="state.playedCards"
+        [players]="state.players"
+        [lastTrickWinnerId]="state.lastTrickWinnerId"
+        [lastTrickWinningCardId]="state.lastTrickWinningCardId"
+      ></app-played-cards>
+    </section>
 
-      <!-- Zone infos joueurs -->
-      <section class="players-info-section">
-        <app-player-info
-          *ngFor="let player of state.players"
-          [player]="player"
-          [isCurrent]="player.id === state.currentPlayerId"
-          [lastTrickWinnerId]="state.lastTrickWinnerId"
-        ></app-player-info>
-      </section>
+    <!-- Zone infos joueurs -->
+    <section class="players-info-section">
+      @for (player of state.players; track player.id) {
+      <app-player-info
+        [player]="player"
+        [isCurrent]="player.id === state.currentPlayerId"
+        [lastTrickWinnerId]="state.lastTrickWinnerId"
+      ></app-player-info>
+      }
+    </section>
 
-      <!-- Main du joueur -->
-      <section class="player-hand-section">
-        <h3>Main du joueur</h3>
-        <app-player-hand
-          [hand]="getCurrentPlayerHand(state)"
-          (cardClicked)="onCardPlayed($event)"
-          [cardsPlayable]="state.biddingConfirmed"
-        ></app-player-hand>
-      </section>
+    <!-- Main du joueur -->
+    <section class="player-hand-section">
+      <h3>Main du joueur</h3>
+      <app-player-hand
+        [hand]="getCurrentPlayerHand(state)"
+        (cardClicked)="onCardPlayed($event)"
+        [cardsPlayable]="state.biddingConfirmed"
+      ></app-player-hand>
+    </section>
 
-      <div class="bid-selection-next-round" *ngIf="state.phase !== 'playing'">
-        <!-- Sélecteur d'annonce pour le joueur humain -->
-        <div
-          class="bid-selection"
-          *ngIf="state.phase === 'bidding' 
-          && state.currentPlayerId === 1 && !state.biddingConfirmed"
+    @if (state.phase !== 'playing') {
+    <div class="bid-selection-next-round">
+      <!-- Sélecteur d'annonce pour le joueur humain -->
+      @if (state.phase === 'bidding' && state.currentPlayerId === 1 &&
+      !state.biddingConfirmed) {
+      <div class="bid-selection">
+        <label for="player-bid">Votre annonce :</label>
+        <select
+          id="player-bid"
+          #bidSelect
+          (change)="gameService.setPlayerBid(1, +bidSelect.value)"
         >
-          <label for="player-bid">Votre annonce :</label>
-          <select
-            id="player-bid"
-            #bidSelect
-            (change)="gameService.setPlayerBid(1, +bidSelect.value)"
-          >
-            <option
-              *ngFor="let i of getBidOptions(state.cardsThisRound)"
-              [value]="i"
-              [selected]="i === getPlayerBid(state)"
-            >
-              {{ i }}
-            </option>
-          </select>
-          <button class="confirm-bid-btn" (click)="confirmBid()">
-            Valider
-          </button>
-        </div>
-        <!-- Bouton next round -->
-        <button
-          *ngIf="state.phase === 'end-round'"
-          class="next-round-btn"
-          (click)="gameService.startNewRound()"
-        >
-          Next Round
-        </button>
+          @for (i of getBidOptions(state.cardsThisRound); track i) {
+          <option [value]="i" [selected]="i === getPlayerBid(state)">
+            {{ i }}
+          </option>
+          }
+        </select>
+        <button class="confirm-bid-btn" (click)="confirmBid()">Valider</button>
       </div>
-    </ng-container>
+      }
+      <!-- Bouton next round -->
+      @if (state.phase === 'end-round') {
+      <button class="next-round-btn" (click)="gameService.startNewRound()">
+        Next Round
+      </button>
+      }
+    </div>
+    } }
   </header>
 </div>

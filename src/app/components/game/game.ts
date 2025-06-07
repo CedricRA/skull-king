@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PlayedCards } from '../played-cards/played-cards';
 import { PlayerInfo } from '../player-info/player-info';
 import { PlayerHand } from '../player-hand/player-hand';
-import { NgFor, AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Game as GameService } from '../../services/game';
 import { GameState } from '../../models/game-state.model';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { Card } from '../../models/card.model';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [PlayedCards, PlayerInfo, PlayerHand, NgFor, AsyncPipe, NgIf],
+  imports: [PlayedCards, PlayerInfo, PlayerHand, AsyncPipe],
   templateUrl: './game.html',
   styleUrls: ['./game.scss'],
 })
