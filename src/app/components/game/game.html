@@ -1,0 +1,73 @@
+<div class="game-container">
+  <!-- Titre et infos de round -->
+  <header class="game-header">
+    <h1>Skull King Card Game</h1>
+    <ng-container *ngIf="gameState$ | async as state">
+      <div class="round-info">
+        <span>Round : {{ state.round }}</span>
+      </div>
+
+      <!-- Zone cartes jouées -->
+      <section class="played-cards-section">
+        <h2>Plateau de jeu</h2>
+        <app-played-cards
+          [playedCards]="state.playedCards"
+          [players]="state.players"
+          [lastTrickWinnerId]="state.lastTrickWinnerId"
+          [lastTrickWinningCardId]="state.lastTrickWinningCardId"
+        ></app-played-cards>
+      </section>
+
+      <!-- Zone infos joueurs -->
+      <section class="players-info-section">
+        <app-player-info
+          *ngFor="let player of state.players"
+          [player]="player"
+          [isCurrent]="player.id === state.currentPlayerId"
+          [lastTrickWinnerId]="state.lastTrickWinnerId"
+        ></app-player-info>
+      </section>
+
+      <!-- Main du joueur -->
+      <section class="player-hand-section">
+        <h3>Main du joueur</h3>
+        <app-player-hand
+          [hand]="getCurrentPlayerHand(state)"
+          (cardClicked)="onCardPlayed($event)"
+          [cardsPlayable]="state.biddingConfirmed"
+        ></app-player-hand>
+
+        <!-- Sélecteur d'annonce pour le joueur humain -->
+        <div
+          class="bid-selection"
+          *ngIf="state.phase === 'bidding' && state.currentPlayerId === 1 && !state.biddingConfirmed"
+        >
+          <label for="player-bid">Votre annonce : </label>
+          <select
+            id="player-bid"
+            #bidSelect
+            (change)="gameService.setPlayerBid(1, +bidSelect.value)"
+          >
+            <option
+              *ngFor="let i of getBidOptions(state.cardsThisRound)"
+              [value]="i"
+              [selected]="i === getPlayerBid(state)"
+            >
+              {{ i }}
+            </option>
+          </select>
+          <button class="confirm-bid-btn" (click)="confirmBid()">
+            Valider l'annonce
+          </button>
+        </div>
+      </section>
+
+      <!-- Bouton next round -->
+      <div class="next-round-section">
+        <button class="next-round-btn" (click)="gameService.startNewRound()">
+          Next Round
+        </button>
+      </div>
+    </ng-container>
+  </header>
+</div>

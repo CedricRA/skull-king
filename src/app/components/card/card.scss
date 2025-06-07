@@ -1,0 +1,23 @@
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  width: 100%;
+  height: 100%;
+}
+.card-classic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.card-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.1em;
+  color: var(--sk-accent-gold, #ffe066);
+  text-shadow: 0 1px 4px #0006;
+}

@@ -1,0 +1,220 @@
+.game-container {
+  background: var(--sk-bg);
+  color: var(--sk-text);
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 1rem;
+
+  h1 {
+    font-size: 2.7rem;
+    font-weight: 800;
+    color: var(--sk-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 12px #7ed6df55;
+  }
+  .round-info {
+    color: var(--sk-accent-turquoise);
+    font-size: 1.15rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 6px #7ed6df55;
+  }
+}
+
+.played-cards-section {
+  background: var(--sk-surface);
+  border-radius: 1.2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--sk-shadow);
+  min-width: 340px;
+  min-height: 120px;
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 1rem;
+  border: 2.5px solid var(--sk-border);
+  h2 {
+    color: var(--sk-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 6px #7ed6df55;
+  }
+}
+
+.players-info-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 1rem;
+}
+
+.player-info-placeholder {
+  background: var(--sk-card-bg);
+  border: 2.5px solid var(--sk-card-border);
+  border-radius: 1rem;
+  padding: 1.2rem 2rem;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 12px #eebbc355;
+  gap: 0.3rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.player-name {
+  color: var(--sk-accent);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.5px;
+}
+.player-score, .player-bid, .player-tricks {
+  color: var(--sk-text-muted);
+  font-size: 0.98rem;
+}
+
+.player-hand-section {
+  background: var(--sk-surface-alt);
+  border-radius: 1.2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--sk-shadow);
+  min-width: 340px;
+  width: 100%;
+  max-width: 700px;
+  border: 2.5px solid var(--sk-accent);
+  h3 {
+    color: var(--sk-primary);
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 6px #eebbc355;
+  }
+}
+
+.player-hand-placeholder {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.hand-card {
+  width: 56px;
+  height: 80px;
+  background: var(--sk-card-bg);
+  border: 2.5px solid var(--sk-accent-turquoise);
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--sk-primary);
+  box-shadow: 0 2px 8px #7ed6df55;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+}
+.hand-card:hover {
+  transform: translateY(-8px) scale(1.09);
+  border-color: var(--sk-accent-gold);
+  box-shadow: 0 4px 16px #ffe06699;
+}
+
+.played-cards-placeholder {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+.card-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-back {
+  width: 56px;
+  height: 80px;
+  background: var(--sk-card-bg);
+  border: 2.5px solid var(--sk-primary);
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--sk-accent-gold);
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px #3e6ff455;
+}
+.player-label {
+  color: var(--sk-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.next-round-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.next-round-btn {
+  background: var(--sk-btn-bg);
+  color: var(--sk-btn-text);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.95rem 2.9rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 16px #7ed6df55;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 6px #7ed6df55;
+  &:hover {
+    background: var(--sk-btn-bg-hover);
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 6px 32px #7ed6df99;
+  }
+}
+
+// Responsive
+@media (max-width: 900px) {
+  .players-info-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .played-cards-section, .player-hand-section {
+    max-width: 98vw;
+    min-width: unset;
+    padding: 1rem;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Pour éviter le scroll vertical si pas nécessaire */
+  overflow-y: auto;
+}
+
+body {
+  overflow-y: hidden;
+}

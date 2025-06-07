@@ -1,0 +1,36 @@
+.player-hand-placeholder {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.hand-card {
+  width: 56px;
+  height: 80px;
+  background: var(--sk-card-bg);
+  border: 2px solid var(--sk-card-border);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--sk-primary);
+  box-shadow: 0 2px 8px #0004;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.hand-card:hover {
+  transform: translateY(-6px) scale(1.07);
+  border-color: var(--sk-accent);
+}
+
+.disabled-hand .hand-card {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none; /* Empêche les événements de souris */
+}
+
+.disabled-hand .hand-card:hover {
+  transform: none;
+  border-color: var(--sk-card-border);
+}

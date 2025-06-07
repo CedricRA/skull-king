@@ -1,0 +1,22 @@
+.player-info-placeholder {
+  background: var(--sk-card-bg);
+  border: 2px solid var(--sk-card-border);
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px #0003;
+  gap: 0.3rem;
+}
+.player-name {
+  color: var(--sk-accent);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+.player-score, .player-bid, .player-tricks {
+  color: var(--sk-text-muted);
+  font-size: 0.98rem;
+}

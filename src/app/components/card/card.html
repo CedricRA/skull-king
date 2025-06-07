@@ -1,0 +1,27 @@
+<ng-container [ngSwitch]="card.color">
+  <!-- Cartes spéciales -->
+  <span *ngSwitchCase="'pirate'" class="card-icon">&#9760;</span>
+  <span *ngSwitchCase="'escape'" class="card-icon">🚩</span>
+  <span *ngSwitchCase="'skullking'" class="card-icon">&#9760;</span>
+  <span *ngSwitchCase="'mermaid'" class="card-icon">🧜‍♀️</span>
+  <span *ngSwitchCase="'scarymary'" class="card-icon">👻</span>
+
+  <!-- Cartes classiques -->
+  <div *ngSwitchCase="'spades'" class="card-classic">
+    <span class="card-icon" style="color: #4f7cff">&#9824;</span>
+    <span class="card-value">{{ card.value }}</span>
+  </div>
+  <div *ngSwitchCase="'hearts'" class="card-classic">
+    <span class="card-icon" style="color: #e2557b">&#9829;</span>
+    <span class="card-value">{{ card.value }}</span>
+  </div>
+  <div *ngSwitchCase="'diamonds'" class="card-classic">
+    <span class="card-icon" style="color: #7ed6df">&#9830;</span>
+    <span class="card-value">{{ card.value }}</span>
+  </div>
+  <div *ngSwitchCase="'clubs'" class="card-classic">
+    <span class="card-icon" style="color: #ffe066">&#9827;</span>
+    <span class="card-value">{{ card.value }}</span>
+  </div>
+  <span *ngSwitchDefault>?</span>
+</ng-container>

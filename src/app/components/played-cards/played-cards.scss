@@ -1,0 +1,37 @@
+.played-cards-placeholder {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+.card-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-back {
+  width: 56px;
+  height: 80px;
+  background: var(--sk-card-bg);
+  border: 2px solid var(--sk-card-border);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--sk-accent);
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px #0004;
+}
+.card-back.winning-card {
+  border-color: var(--sk-accent-gold) !important;
+  box-shadow: 0 0 15px var(--sk-accent-gold) !important;
+}
+.player-label {
+  color: var(--sk-primary);
+  font-size: 0.95rem;
+}
+.player-label.trick-winner-name {
+  color: var(--sk-accent-gold) !important;
+  text-shadow: 0 0 10px var(--sk-accent-gold) !important;
+}

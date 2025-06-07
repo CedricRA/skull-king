@@ -1,0 +1,9 @@
+<div class="player-hand-placeholder" [class.disabled-hand]="!cardsPlayable">
+  <div
+    class="hand-card"
+    *ngFor="let card of hand; trackBy: trackByCardId"
+    (click)="cardsPlayable && onCardClick(card)"
+  >
+    <app-card [card]="card"></app-card>
+  </div>
+</div>

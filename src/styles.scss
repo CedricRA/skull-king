@@ -1,0 +1,33 @@
+:root {
+  --sk-bg: #1a202c;
+  --sk-surface: linear-gradient(135deg, #232946 70%, #b8c1ec 100%);
+  --sk-surface-alt: linear-gradient(135deg, #232946 60%, #eebbc3 100%);
+  --sk-border: #b8c1ec;
+  --sk-primary: #3e6ff4;
+  --sk-accent: #eebbc3;
+  --sk-accent-turquoise: #7ed6df;
+  --sk-accent-gold: #ffe066;
+  --sk-text: #f4faff;
+  --sk-text-muted: #b8c1ec;
+  --sk-card-bg: linear-gradient(135deg, #232946 70%, #7ed6df 100%);
+  --sk-card-border: #eebbc3;
+  --sk-btn-bg: linear-gradient(90deg, #3e6ff4 60%, #7ed6df 100%);
+  --sk-btn-bg-hover: linear-gradient(90deg, #7ed6df 60%, #3e6ff4 100%);
+  --sk-btn-text: #fff;
+  --sk-shadow: 0 4px 24px #7ed6df33;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  background: var(--sk-bg);
+  color: var(--sk-text);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

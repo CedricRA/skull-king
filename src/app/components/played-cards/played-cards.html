@@ -1,0 +1,19 @@
+<div class="played-cards-placeholder">
+  <div class="card-slot" *ngFor="let player of players">
+    <div
+      class="card-back"
+      [class.winning-card]="player.id === lastTrickWinnerId"
+    >
+      <ng-container *ngIf="getPlayedCard(player.id) as played">
+        <app-card [card]="played.card"></app-card>
+      </ng-container>
+      <ng-container *ngIf="!getPlayedCard(player.id)"></ng-container>
+    </div>
+    <div
+      class="player-label"
+      [class.trick-winner-name]="player.id === lastTrickWinnerId"
+    >
+      {{ player.name }}
+    </div>
+  </div>
+</div>
