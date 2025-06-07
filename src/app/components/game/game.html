@@ -36,13 +36,16 @@
           (cardClicked)="onCardPlayed($event)"
           [cardsPlayable]="state.biddingConfirmed"
         ></app-player-hand>
+      </section>
 
+      <div class="bid-selection-next-round" *ngIf="state.phase !== 'playing'">
         <!-- Sélecteur d'annonce pour le joueur humain -->
         <div
           class="bid-selection"
-          *ngIf="state.phase === 'bidding' && state.currentPlayerId === 1 && !state.biddingConfirmed"
+          *ngIf="state.phase === 'bidding' 
+          && state.currentPlayerId === 1 && !state.biddingConfirmed"
         >
-          <label for="player-bid">Votre annonce : </label>
+          <label for="player-bid">Votre annonce :</label>
           <select
             id="player-bid"
             #bidSelect
@@ -57,14 +60,15 @@
             </option>
           </select>
           <button class="confirm-bid-btn" (click)="confirmBid()">
-            Valider l'annonce
+            Valider
           </button>
         </div>
-      </section>
-
-      <!-- Bouton next round -->
-      <div class="next-round-section">
-        <button class="next-round-btn" (click)="gameService.startNewRound()">
+        <!-- Bouton next round -->
+        <button
+          *ngIf="state.phase === 'end-round'"
+          class="next-round-btn"
+          (click)="gameService.startNewRound()"
+        >
           Next Round
         </button>
       </div>
