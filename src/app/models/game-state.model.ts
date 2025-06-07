@@ -14,7 +14,7 @@ export interface GameState {
   playedCards: PlayedCard[];
   currentPlayerId: number;
   cardsThisRound: number;
-  phase: 'bidding' | 'playing' | 'end-round';
+  phase: 'bidding' | 'playing' | 'end-round' | 'game-over';
   lastTrickWinnerId: number | null;
   lastTrickWinningCardId: number | null;
   biddingConfirmed: boolean;

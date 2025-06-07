@@ -84,7 +84,7 @@ export class Game {
       playedCards: [],
       currentPlayerId: 1,
       cardsThisRound,
-      phase: 'bidding',
+      phase: state.round > 8 ? 'game-over' : 'bidding',
       lastTrickWinnerId: null,
       lastTrickWinningCardId: null,
       biddingConfirmed: false,

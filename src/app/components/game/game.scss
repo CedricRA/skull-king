@@ -105,6 +105,15 @@
     letter-spacing: 0.5px;
     text-shadow: 0 1px 6px #eebbc355;
   }
+
+  .game-over-message {
+    color: var(--sk-accent-gold);
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 2rem;
+    text-shadow: 0 2px 12px #ffe06699;
+  }
 }
 
 .player-hand-placeholder {

@@ -32,11 +32,15 @@
     <!-- Main du joueur -->
     <section class="player-hand-section">
       <h3>Main du joueur</h3>
+      @if (state.phase === 'game-over') {
+      <div class="game-over-message">Partie terminée</div>
+      } @else {
       <app-player-hand
         [hand]="getCurrentPlayerHand(state)"
         (cardClicked)="onCardPlayed($event)"
-        [cardsPlayable]="state.biddingConfirmed"
+        [cardsPlayable]="state.biddingConfirmed && state.currentPlayerId === 1 && state.playedCards.length === 0"
       ></app-player-hand>
+      }
     </section>
 
     @if (state.phase !== 'playing') {
